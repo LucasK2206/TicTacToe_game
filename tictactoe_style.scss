@@ -1,0 +1,117 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@500&display=swap');
+
+$white_color: #fff ;
+$dark_color: #282838;
+$black_color: #000;
+html{
+    font-size: 10px;
+}
+body{
+    color: $white_color;
+    background-color: $dark_color;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Lexend Mega', sans-serif;
+}
+.game{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @mixin game_grid {
+        display: grid;
+        grid-gap: 4px;
+    }
+
+    &__board{
+        @include game_grid;
+        grid-template-rows: repeat(3, 70px);
+        grid-template-columns: repeat(3, 70px);
+        &--box{
+            background-color: #fff;
+            font-size: 6rem;
+        }
+    }
+
+    @media only screen and (min-width: 320px){
+        &__board{
+            @include game_grid;
+            grid-template-rows: repeat(3, 100px);
+            grid-template-columns: repeat(3, 100px);
+            &--box{
+                font-size: 9rem;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1024px){
+        &__board{
+            @include game_grid;
+            grid-template-rows: repeat(3, 150px);
+            grid-template-columns: repeat(3, 150px);
+            &--box{
+                font-size: 14rem;
+            }
+        }
+    }
+    @media only screen and (min-width: 1920px) and (min-height: 1080px){
+        &__board{
+            @include game_grid;
+            grid-template-rows: repeat(3, 250px);
+            grid-template-columns: repeat(3, 250px);
+            &--box{
+                font-size: 24rem;
+            }
+        }
+    }
+    &__board.X &__board--box:not(.O, .X):hover::after{
+        content: "X";
+        opacity: 0.7;
+    }
+    &__board.O &__board--box:not(.X, .O):hover::after{
+        content: "O";
+        opacity: 0.7;
+    }
+
+
+    &__board--box{
+        color: $black_color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        &--box.O,
+        &--box.X{
+            display: block;
+            color: black;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        &.O::after{
+            content: "O";
+            position: absolute;
+
+        }
+        &.X::after{
+            content: "X";
+            position: absolute;
+
+        }
+    }
+}

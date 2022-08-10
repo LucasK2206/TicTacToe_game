@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@500&display=swap");
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  color: #fff;
+  background-color: #282838;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
+  font-family: "Lexend Mega", sans-serif;
+}
+
+.game {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game__board {
+  display: grid;
+  grid-gap: 4px;
+  grid-template-rows: repeat(3, 70px);
+  grid-template-columns: repeat(3, 70px);
+}
+.game__board--box {
+  background-color: #fff;
+  font-size: 6rem;
+}
+@media only screen and (min-width: 320px) {
+  .game__board {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 100px);
+  }
+  .game__board--box {
+    font-size: 9rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .game__board {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: repeat(3, 150px);
+  }
+  .game__board--box {
+    font-size: 14rem;
+  }
+}
+@media only screen and (min-width: 1920px) and (min-height: 1080px) {
+  .game__board {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-rows: repeat(3, 250px);
+    grid-template-columns: repeat(3, 250px);
+  }
+  .game__board--box {
+    font-size: 24rem;
+  }
+}
+.game__board.X .game__board--box:not(.O, .X):hover::after {
+  content: "X";
+  opacity: 0.7;
+}
+.game__board.O .game__board--box:not(.X, .O):hover::after {
+  content: "O";
+  opacity: 0.7;
+}
+.game__board--box {
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.game__board--box--box.O, .game__board--box--box.X {
+  display: block;
+  color: black;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.game__board--box.O::after {
+  content: "O";
+  position: absolute;
+}
+.game__board--box.X::after {
+  content: "X";
+  position: absolute;
+}/*# sourceMappingURL=tictactoe_style.css.map */
