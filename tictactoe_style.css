@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@500&display=swap");
 *, *::before, *::after {
   box-sizing: border-box;
@@ -47,6 +48,12 @@ body {
   }
 }
 @media only screen and (min-width: 1024px) {
+  .game .game__winnerboard--winner {
+    font-size: 8rem;
+  }
+  .game .game__winnerboard--reset {
+    font-size: 3rem;
+  }
   .game__board {
     display: grid;
     grid-gap: 4px;
@@ -58,6 +65,12 @@ body {
   }
 }
 @media only screen and (min-width: 1920px) and (min-height: 1080px) {
+  .game .game__winnerboard--winner {
+    font-size: 13rem;
+  }
+  .game .game__winnerboard--reset {
+    font-size: 6rem;
+  }
   .game__board {
     display: grid;
     grid-gap: 4px;
@@ -102,4 +115,61 @@ body {
 .game__board--box.X::after {
   content: "X";
   position: absolute;
+}
+.game__winnerboard {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(24, 24, 24, 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.game__winnerboard--disabled {
+  display: none;
+}
+.game__winnerboard--winner {
+  font-size: 5rem;
+}
+.game__winnerboard--reset {
+  padding: 10px 60px;
+  cursor: pointer;
+  background-color: #181818;
+  color: #fff;
+  position: relative;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow: hidden;
+  margin-top: 15px;
+}
+.game__winnerboard--reset::after {
+  position: absolute;
+  content: "wyczyść";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffa500;
+  transform: translateY(100%);
+  transition: 0.4s;
+}
+.game__winnerboard--reset .reset_text {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.4s;
+}
+.game__winnerboard--reset:hover .reset_text {
+  transform: translateY(-120%);
+}
+.game__winnerboard--reset:hover::after {
+  transform: translateY(0);
 }/*# sourceMappingURL=tictactoe_style.css.map */
