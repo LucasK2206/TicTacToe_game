@@ -38,18 +38,33 @@ const winningCombinations = [
 const checkWinningCombinations = function(actualPlayer) {
     return winningCombinations.some(combinations => {
         return combinations.every(combination => {
-            return allBoardBoxes[combination].classList.contains(actualPlayer)
+            return allBoardBoxes[combination].classList.contains(actualPlayer);
         })
     })
 }
 
 const isDraw = function(){
     return allBoardBoxes.every(box => {
-        return box.classList.contains(playerX) || box.classList.contains(playerO)
+        return box.classList.contains(playerX) || box.classList.contains(playerO);
     })
 }
 const resetBtnClicked = function() {
-    location.reload();
+    allBoardBoxes.forEach(box => {
+        if(box.classList.contains("X")){
+            box.classList.remove("X");
+        } else{
+            box.classList.remove("O");
+        }
+    })
+    if(gameBoard.classList.contains("X")){
+        gameBoard.classList.remove("X");
+    } else{
+        gameBoard.classList.remove("O");
+    }
+    winnerBoard.classList.remove("game__winnerboard");
+    winnerBoard.classList.add("game__winnerboard--disabled");
+    actualPlayer = null;
+    gameInit();
 }
 
 const handleClick = function(){
@@ -63,9 +78,9 @@ const handleClick = function(){
     }
     else if (isDraw()){
         winnerBoard.classList.remove("game__winnerboard--disabled");
-        winnerBoard.classList.add("game__winnerboard")
+        winnerBoard.classList.add("game__winnerboard");
         winnerBox.innerHTML = `Remis`;
-        resetBtn.addEventListener("click", resetBtnClicked)
+        resetBtn.addEventListener("click", resetBtnClicked);
     }
 
 
