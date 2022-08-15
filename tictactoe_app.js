@@ -1,8 +1,8 @@
-const gameBoard = document.querySelector("#game-board");
+const gameBoard = document.querySelector(".game-board");
 const allBoardBoxes = [...document.querySelectorAll(".game__board--box")];
-const winnerBox = document.querySelector("#game__winnerboard--winner");
-const resetBtn = document.querySelector("#game__winnerboard--reset");
-const winnerBoard = document.querySelector("#game__winnerboard");
+const winnerBox = document.querySelector(".game__winnerboard--winner");
+const resetBtn = document.querySelector(".game__winnerboard--reset");
+const winnerBoard = document.querySelector(".game-winnerboard");
 
 const playerX = "X";
 const playerO = "O";
